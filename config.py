@@ -5,7 +5,7 @@ class Config:
     DEVELOPMENT = False
     SECRET_KEY = os.getenv("SECRET_KEY", "default-key")
 
-class Production(Config):
+class ProductionConfig(Config):
     pass
 
 class StagingConfig(Config):
