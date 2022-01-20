@@ -6,6 +6,3 @@ app = Flask(__name__)
 def index():
     return "Hello World!"
 
-
-if __name__ == "__main__":
-    app.run(debug=False, use_reloader=True, host='localhost', port=8080)
