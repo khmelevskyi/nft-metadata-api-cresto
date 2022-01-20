@@ -12,6 +12,7 @@ Jinja2==3.0.3
 Mako==1.1.6
 MarkupSafe==2.0.1
 psycopg2==2.9.1
+python-dotenv==0.19.2
 SQLAlchemy==1.4.30
 Werkzeug==2.0.2
 zipp==3.7.0
