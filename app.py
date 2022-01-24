@@ -45,7 +45,7 @@ def index():
     return "CRESTO API"
 
 
-@app.route("/cresto_passes/mint/", methods=["GET", "POST"])
+@app.route("/cresto-passes/mint/", methods=["GET", "POST"])
 def add_token():
     errors = []
     if request.method == "POST":
@@ -75,14 +75,14 @@ def add_token():
     return render_template("index.html", errors=errors)
 
 
-@app.route("/cresto_passes/", methods=["GET"])
+@app.route("/cresto-passes/", methods=["GET"])
 def get_all_tokens():
     tokens = db.session.query(CrestoPass).all()
     tokens_json = [c.as_dict() for c in tokens]
     return jsonify(tokens_json)
 
 
-@app.route("/cresto_passes/<id>/", methods=["GET"])
+@app.route("/cresto-passes/<id>/", methods=["GET"])
 def get_one_token(id):
     token = db.session.query(CrestoPass).get(id)
     print(token)
