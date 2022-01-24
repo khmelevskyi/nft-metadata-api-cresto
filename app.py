@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask import Flask, render_template, request
 from flask import Flask
 from loguru import logger
+from dotenv import load_dotenv
 
 from contract_functions import mint
 
@@ -16,6 +17,7 @@ logger.add(
     rotation="30 KB",
     compression="zip",
 )
+load_dotenv()
 
 
 app = Flask(__name__)
@@ -52,25 +54,34 @@ def add_token():
         
         owner_id = request.form["owner_id"]
         print(owner_id)
+        password = request.form["password"]
+        if password == os.getenv("MINT_PASSWORD"):
 
-        try:
-            if app.config["DEBUG"] == True:
-                token_id = mint(owner_id, BSC_TESTNET)
-            else:
-                token_id = mint(owner_id, BSC_MAINNET)
-            token = CrestoPass(
-                id=token_id,
-                name=NAME,
-                symbol=SYMBOL,
-                image=IMAGE,
-                owner_id=owner_id,
-                description=DESCRIPTION
-            )
-            db.session.add(token)
-            db.session.commit()
-        except:
+            try:
+                if app.config["DEBUG"] == True:
+                    token_id = mint(owner_id, BSC_TESTNET)
+                else:
+                    token_id = mint(owner_id, BSC_MAINNET)
+                token = CrestoPass(
+                    id=token_id,
+                    name=NAME,
+                    symbol=SYMBOL,
+                    image=IMAGE,
+                    owner_id=owner_id,
+                    description=DESCRIPTION
+                )
+                db.session.add(token)
+                db.session.commit()
+
+                text = f"Created new token with tokenId: {token_id}"
+                logger.info(text)
+                return render_template("index.html", errors=errors, text=text)
+            except:
+                errors.append("Unable to add item to DB")
+                logger.error(f"Errors happened: {errors}")
+        else:
+            errors.append("Wrong password!")
             logger.error(f"Errors happened: {errors}")
-            errors.append("Unable to add item to DB")
             
     return render_template("index.html", errors=errors)
 
