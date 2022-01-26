@@ -12,8 +12,20 @@
             }
             body {
                 background-image: url('https://gateway.pinata.cloud/ipfs/QmU8Tj1wiozZ7jHPgyjGKkduRGtZETdPSnXUrE6hacZxoc');
+                background-position: center center;
                 background-repeat: no-repeat;
                 background-size: cover;
+                background-attachment: fixed;
+                background-color: #122034;
+            }
+            @media (max-width: 830px) {
+                body {
+                    background-image: url('/static/Img\ Bg.png');
+                    background-position: left left;
+                }
+                form {
+                    justify-content: center;
+                }
             }
             span.credits {
                 background: url(/static/paper-plane-regular.svg) no-repeat top left;
@@ -22,6 +34,12 @@
                 display: inline-block;
                 height: 14px;
                 width: 18px;
+            }
+            div.input-group, div div button {
+                box-shadow: 6px 6px 0.8em #122034;
+            }
+            legend h2 b{
+                text-shadow: 4px 4px #122034;
             }
         </style>
     </head>
