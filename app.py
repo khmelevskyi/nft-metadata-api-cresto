@@ -40,12 +40,12 @@ NAME = "CRESTO PASS"
 CATEGORY = "cresto_pass"
 IMAGE = "ipfs://QmcZW6yPYtyLMRPtQzWEzWnXg1VRaMBA784wjyg7GPo3WE"
 DESCRIPTION = str(
-    "Cresto Pass - это игровой пропуск, который даёт следующие бонусы:\n\n"+
-    "1. Даёт вам возможность купить 5 сундуков на сайте cresto.app со скидкой 30% после запуска игры.\n\n"+
-    "2. Даёт значительно повышенный шанс(75%) на участие в IDO на сайте cresto.app\n\n"+
-    "3. Даёт доступ к приватным аукционам ресторанов.\n\n"+
-    "4. Позволяет получить 1 голос в DAO Cresto\n\n"+
-    "Единственный способ получить Cresto Pass — выиграть его в эирдропе."
+    "Cresto Pass is a game pass that gives the following bonuses:\n\n"+
+    "1. Gives you the opportunity to buy 5 chests at cresto.app at a 30% discount after launching the game.\n\n"+
+    "2. Gives you a greatly increased chance (75%) of participating in IDO at cresto.app\n\n"+
+    "3. Gives access to private restaurant auctions.\n\n"+
+    "4. Allows you to get 1 vote in DAO Cresto\n\n"+
+    "The only way to get a Cresto Pass is to win it in an airdrop."
 )
 
 
