@@ -37,9 +37,16 @@ BSC_MAINNET = "https://bsc-dataseed1.binance.org"
 BSC_TESTNET = "https://data-seed-prebsc-1-s1.binance.org:8545"
 
 NAME = "CRESTO PASS"
-SYMBOL = "CRESTOPASS"
+CATEGORY = "cresto_pass"
 IMAGE = "ipfs://QmcZW6yPYtyLMRPtQzWEzWnXg1VRaMBA784wjyg7GPo3WE"
-DESCRIPTION = "demo test nft token"
+DESCRIPTION = (
+    "Cresto Pass - это игровой пропуск, который даёт следующие бонусы:\n\n"+
+    "1. Даёт вам возможность купить 5 сундуков на сайте cresto.app со скидкой 30% после запуска игры.\n\n"+
+    "2. Даёт значительно повышенный шанс(75%) на участие в IDO на сайте cresto.app\n\n"+
+    "3. Даёт доступ к приватным аукционам ресторанов.\n\n"+
+    "4. Позволяет получить 1 голос в DAO Cresto\n\n"+
+    "Единственный способ получить Cresto Pass — выиграть его в эирдропе."
+)
 
 
 @app.route("/api/", methods=["GET", "POST"])
@@ -47,7 +54,7 @@ def index():
     return "CRESTO API"
 
 
-@app.route("/api/cresto-passes/mint/", methods=["GET", "POST"])
+@app.route("/api/cresto-nfts/mint/", methods=["GET", "POST"])
 def add_token():
     errors = []
     if request.method == "POST":
@@ -65,7 +72,7 @@ def add_token():
                 token = CrestoPass(
                     id=token_id,
                     name=NAME,
-                    symbol=SYMBOL,
+                    category=CATEGORY,
                     image=IMAGE,
                     owner_id=owner_id,
                     description=DESCRIPTION
@@ -86,14 +93,14 @@ def add_token():
     return render_template("index.html", errors=errors)
 
 
-@app.route("/api/cresto-passes/", methods=["GET"])
+@app.route("/api/cresto-nfts/", methods=["GET"])
 def get_all_tokens():
     tokens = db.session.query(CrestoPass).all()
     tokens_json = [c.as_dict() for c in tokens]
     return jsonify(tokens_json)
 
 
-@app.route("/api/cresto-passes/<id>/", methods=["GET"])
+@app.route("/api/cresto-nfts/<id>/", methods=["GET"])
 def get_one_token(id):
     token = db.session.query(CrestoPass).get(id)
     print(token)
