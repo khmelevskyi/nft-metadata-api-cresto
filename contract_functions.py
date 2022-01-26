@@ -7,7 +7,7 @@ from loguru import logger
 
 load_dotenv()
 
-def mint(receiverAddress, bsc_endpoint):
+def mint(receiverAddress, bsc_endpoint, bsc_chain_id):
 
     w3 = Web3(Web3.HTTPProvider(bsc_endpoint))
     w3.middleware_onion.inject(geth_poa_middleware, layer=0)
@@ -24,7 +24,7 @@ def mint(receiverAddress, bsc_endpoint):
     nonce = w3.eth.get_transaction_count(os.getenv("CONTRACT_OWNER_ADDRESS"))
 
     options = txn.buildTransaction({
-        "chainId": 97,
+        "chainId": bsc_chain_id,
         # 'to': '0xc05D4536846168b93a83F289d8E14283D43cd515',
         'gas': txn.estimateGas({"from": os.getenv("CONTRACT_OWNER_ADDRESS")}),
         'gasPrice': w3.toWei(10, "gwei"),

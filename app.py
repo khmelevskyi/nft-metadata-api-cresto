@@ -34,7 +34,9 @@ from models import CrestoPass
 logger.debug("Connected to db successfully")
 
 BSC_MAINNET = "https://bsc-dataseed1.binance.org"
+BSC_MAINNET_CHAIN_ID = int(56)
 BSC_TESTNET = "https://data-seed-prebsc-1-s1.binance.org:8545"
+BSC_TESTNET_CHAIN_ID = int(97)
 
 NAME = "CRESTO PASS"
 CATEGORY = "cresto_pass"
@@ -66,9 +68,9 @@ def add_token():
 
             try:
                 if app.config["DEBUG"] == True:
-                    token_id = mint(owner_id, BSC_TESTNET)
+                    token_id = mint(owner_id, BSC_TESTNET, BSC_TESTNET_CHAIN_ID)
                 else:
-                    token_id = mint(owner_id, BSC_MAINNET)
+                    token_id = mint(owner_id, BSC_MAINNET, BSC_MAINNET_CHAIN_ID)
                 logger.info(f"Minting token with tokenId {token_id}...")
                 token = CrestoPass(
                     id=token_id,
