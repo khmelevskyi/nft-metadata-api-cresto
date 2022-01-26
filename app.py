@@ -39,7 +39,7 @@ BSC_TESTNET = "https://data-seed-prebsc-1-s1.binance.org:8545"
 NAME = "CRESTO PASS"
 CATEGORY = "cresto_pass"
 IMAGE = "ipfs://QmcZW6yPYtyLMRPtQzWEzWnXg1VRaMBA784wjyg7GPo3WE"
-DESCRIPTION = (
+DESCRIPTION = str(
     "Cresto Pass - это игровой пропуск, который даёт следующие бонусы:\n\n"+
     "1. Даёт вам возможность купить 5 сундуков на сайте cresto.app со скидкой 30% после запуска игры.\n\n"+
     "2. Даёт значительно повышенный шанс(75%) на участие в IDO на сайте cresto.app\n\n"+
@@ -69,6 +69,7 @@ def add_token():
                     token_id = mint(owner_id, BSC_TESTNET)
                 else:
                     token_id = mint(owner_id, BSC_MAINNET)
+                logger.info(f"Minting token with tokenId {token_id}...")
                 token = CrestoPass(
                     id=token_id,
                     name=NAME,
@@ -83,8 +84,8 @@ def add_token():
                 text = f"Created new token with tokenId: {token_id}"
                 logger.info(text)
                 return render_template("index.html", errors=errors, text=text)
-            except:
-                errors.append("Unable to add item to DB")
+            except Exception as e:
+                errors.append(f"Unable to add item to DB. Reason: {e}")
                 logger.error(f"Errors happened: {errors}")
         else:
             errors.append("Wrong password!")
