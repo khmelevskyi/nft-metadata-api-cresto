@@ -31,12 +31,12 @@
                 text-shadow: 4px 4px #122034;
             }
             div#loading {
-    width: 35px;
-    height: 35px;
-    display: none;
-    background: url(/static/loadingimage.gif) no-repeat;
-    cursor: wait;
-    }
+                width: 35px;
+                height: 35px;
+                display: none;
+                /* background: url(/static/loadingimage.gif) no-repeat; */
+                cursor: wait;
+            }
         </style>
     </head>
     <body>
@@ -100,8 +100,8 @@
                     <div class="text-white ml-3" id="loading"><h4>Loading...</h4></div>
                     <!-- Button -->
                     <div class="col-md-4 mt-4" id="content">
-                        <button type="submit" class="btn btn-outline-warning d-none d-md-block btn-lg btn-block" onclick="loading();">SUBMIT <i class="bi bi-send"></i></button>
-                        <button type="submit" class="btn btn-warning d-block d-md-none btn-lg btn-block">SUBMIT <i class="bi bi-send"></i></button>
+                        <button type="submit" class="btn btn-outline-warning d-none d-md-block btn-lg btn-block" onclick="loading();">MINT <i class="bi bi-send"></i></button>
+                        <button type="submit" class="btn btn-warning d-block d-md-none btn-lg btn-block" onclick="loading();">MINT <i class="bi bi-send"></i></button>
                     </div>
 
                     <div class="col-md-4 mt-4">
