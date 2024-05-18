@@ -12,7 +12,7 @@ from contract_functions import mint
 
 
 logger.add(
-    "debug.log",
+    "logs/debug.log",
     format="{time} {level} {message}\n",
     level="DEBUG",
     rotation="30 KB",
@@ -119,11 +119,11 @@ def add_token():
                 return redirect(url_for(".success_mint", tokenId=token_id))
             except Exception as e:
                 error = f"Unable to add item to DB. Reason: {e}"
-                logger.error(f"Errors happened: {errors}")
+                logger.error(f"Error happened: {error}")
                 return redirect(url_for(".fail_mint", error=error))
         else:
             error = "Wrong password!"
-            logger.error(f"Errors happened: {errors}")
+            logger.error(f"Error happened: {error}")
             return redirect(url_for(".fail_mint", error=error))
     
     try:

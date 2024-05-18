@@ -5,3 +5,4 @@ venv
 .env
 *.log
 *.log.zip
+Abi_contract/Abi_contract.json
